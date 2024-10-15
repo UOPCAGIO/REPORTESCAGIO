@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes CAGIO</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; 
+            background-color: #f4f4f9; 
+        }
+        .header {
+            background-color: #38383a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1000;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .report-list {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 0; 
+            margin-bottom: 20px;
+        }
+        .report-list h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #003366;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .report-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .report-list li:hover {
+            background-color: #d2d2d2;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .report-list li.active {
+            background-color: #6a3d5a;
+            color: white;
+            border: 1px solid #6a3d5a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .report-list li .icon {
+            margin-right: 10px;
+        }
+        .carousel-inner {
+            width: 100%;
+            height: 100%; 
+        }
+        .carousel-item {
+            height: 100%;
+            position: relative;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #003366;
+            border-radius: 50%;
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 15%;
+            right: 15%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-item:hover .carousel-caption {
+            opacity: 0.9;
+        }
+        iframe {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SEGUIMIENTO OPERATIVO PROCESO DE AFILIACIONES</h1>
+    </div>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <h3 class="text-center">REPORTES</h3>
+                <ul class="report-list">
+                    <li id="report-0" onclick="toggleReport(0)" data-link="https://lookerstudio.google.com/embed/reporting/fd290106-f3bd-43c0-9e6b-0f782148d336/page/9qFxD">
+                        <i class="fas fa-chart-line icon"></i> TPI URBANO
+                        <a href="https://lookerstudio.google.com/reporting/b3728c94-d706-478c-9d90-f2706dccf3c1/page/p_tjdhnjjskd"  target="_blank" class="btn btn-link float-right" style="padding: 0;"><i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li id="report-1" onclick="toggleReport(1)" data-link="https://lookerstudio.google.com/embed/reporting/b3728c94-d706-478c-9d90-f2706dccf3c1/page/p_tjdhnjjskd">
+                        <i class="fas fa-city icon"></i> AVANCE PREAFILIACIONES
+                        <a href="https://lookerstudio.google.com/reporting/fd290106-f3bd-43c0-9e6b-0f782148d336/page/9qFxD?s=iSc3dzVx9Do" target="_blank" class="btn btn-link float-right" style="padding: 0;"><i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li id="report-2" onclick="toggleReport(2)" data-link="https://app.powerbi.com/view?r=eyJrIjoiM2Q1ODhjZjEtOTNlNS00ZTkxLTkwMDgtMjg3ZDQxZDZhYjFjIiwidCI6IjA4N2Y4ZmZkLTY5NzItNDc1MC04ZjlhLWMwZTQ4YjU2YmQyZiJ9">
+                        <i class="fas fa-users icon"></i> PADRON DE HOGARES
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiM2Q1ODhjZjEtOTNlNS00ZTkxLTkwMDgtMjg3ZDQxZDZhYjFjIiwidCI6IjA4N2Y4ZmZkLTY5NzItNDc1MC04ZjlhLWMwZTQ4YjU2YmQyZiJ9" target="_blank" class="btn btn-link float-right" style="padding: 0;"><i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li id="report-3" onclick="toggleReport(3)" data-link="https://lookerstudio.google.com/embed/reporting/a3734e57-46af-4e96-add3-7299d72a0c16/page/t1arD">
+                        <i class="fas fa-stamp icon"></i> SELLO MUNICIPAL
+                        <a href="https://lookerstudio.google.com/reporting/a3734e57-46af-4e96-add3-7299d72a0c16/page/t1arD?s=n3aeeB-So_g" target="_blank" class="btn btn-link float-right" style="padding: 0;"><i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                    <li id="report-4" onclick="toggleReport(4)" data-link="https://lookerstudio.google.com/embed/reporting/2c732d40-09bf-41d3-b462-bab449fa23bc/page/i0PFE">
+                        <i class="fas fa-file-alt icon"></i> AVANCE DE SOLICITUDES
+                        <a href="https://lookerstudio.google.com/embed/reporting/2c732d40-09bf-41d3-b462-bab449fa23bc/page/i0PFE" target="_blank" class="btn btn-link float-right" style="padding: 0;"><i class="fas fa-external-link-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <div id="reportCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <iframe src="https://lookerstudio.google.com/embed/reporting/b3728c94-d706-478c-9d90-f2706dccf3c1/page/p_tjdhnjjskd" width="75%" height="780px"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe src=  "https://lookerstudio.google.com/embed/reporting/fd290106-f3bd-43c0-9e6b-0f782148d336/page/9qFxD" width="65%" height="780px"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe src="https://app.powerbi.com/view?r=eyJrIjoiM2Q1ODhjZjEtOTNlNS00ZTkxLTkwMDgtMjg3ZDQxZDZhYjFjIiwidCI6IjA4N2Y4ZmZkLTY5NzItNDc1MC04ZjlhLWMwZTQ4YjU2YmQyZiJ9" width="100%" height="600px"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe src="https://lookerstudio.google.com/embed/reporting/a3734e57-46af-4e96-add3-7299d72a0c16/page/t1arD" width="65%" height="780px"></iframe>
+                        </div>
+                        <div class="carousel-item">
+                            <iframe src="https://lookerstudio.google.com/embed/reporting/2c732d40-09bf-41d3-b462-bab449fa23bc/page/i0PFE" width="100%" height="780px"></iframe>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#reportCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#reportCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleReport(reportIndex) {
+            $('.carousel-item').removeClass('active');
+            $('.carousel-item').eq(reportIndex).addClass('active');
+            $('.report-list li').removeClass('active');
+            $('.report-list li').eq(reportIndex).addClass('active');
+        }
+    </script>
+</body>
+</html>
