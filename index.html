@@ -228,7 +228,8 @@
             }
             // Bloquea Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
             if ((e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key)) || (e.ctrlKey && e.shiftKey && ['i', 'j'].includes(e.key)) ||
-                (e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u')) {
+                (e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 'S') || (e.ctrlKey && e.key === 's')){
                 e.preventDefault();
             }
         });
